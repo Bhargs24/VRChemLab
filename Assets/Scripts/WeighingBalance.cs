@@ -4,16 +4,16 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class WeighingBalance : MonoBehaviour
 {
-    public Transform snapPosition;
-    public Text weightDisplay; //display weight
-    public Button tareButton; // to tare the scale
-    public Button changeUnitButton; //change unit
-    public Button onOffButton; // turn the balance on/off
+    public Transform snapPosition; // Where the dish snaps to on the balance
+    public Text weightDisplay; // Display for the weight
+    public Button tareButton; // Button to tare the balance
+    public Button changeUnitButton; // Button to change the unit
+    public Button onOffButton; // Button to turn the balance on/off
 
     private float currentWeight = 0f;
     private float tareWeight = 0f;
     private XRGrabInteractable dishGrabInteractable;
-    private string currentUnit = "g"; 
+    private string currentUnit = "g";
     private bool isOn = false;
 
     private void Start()
@@ -23,17 +23,17 @@ public class WeighingBalance : MonoBehaviour
         onOffButton.onClick.AddListener(ToggleOnOff);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Dish") && isOn)
+        if (collision.gameObject.CompareTag("Dish") && isOn)
         {
-            SnapDish(other.gameObject);
-            dishGrabInteractable = other.gameObject.GetComponent<XRGrabInteractable>();
+            SnapDish(collision.gameObject);
+            dishGrabInteractable = collision.gameObject.GetComponent<XRGrabInteractable>();
             if (dishGrabInteractable != null)
             {
                 dishGrabInteractable.selectExited.AddListener(ReleaseDish);
             }
-            Dish dish = other.gameObject.GetComponent<Dish>();
+            Dish dish = collision.gameObject.GetComponent<Dish>();
             if (dish != null)
             {
                 UpdateWeight(dish);
@@ -62,7 +62,7 @@ public class WeighingBalance : MonoBehaviour
     {
         if (isOn)
         {
-            currentWeight = dish.GetSaltWeight() - tareWeight;
+            currentWeight = dish.GetTotalSaltWeight() - tareWeight;
             UpdateWeightDisplay();
         }
     }

@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class SaltTransfer : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Spatula"))
+        if (collision.gameObject.CompareTag("Spatula"))
         {
-            Spatula spatula = other.GetComponent<Spatula>();
+            Spatula spatula = collision.gameObject.GetComponent<Spatula>();
             if (spatula != null)
             {
                 spatula.PickUpSalt();

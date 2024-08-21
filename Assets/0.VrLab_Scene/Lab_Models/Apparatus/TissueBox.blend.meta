@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Kleenex_opt_tissue_Single
-    second: {fileID: -239302050275881172, guid: 48b2e2c7c1386974195a44cee301f51d,
+    second: {fileID: 8556262120643298411, guid: 2581757ce6047624a851e49d543f6288,
       type: 3}
   materials:
     materialImportMode: 2

@@ -1,27 +1,27 @@
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 
 public class Spatula : MonoBehaviour
 {
-    public float capacity; 
-    public GameObject substancePrefab; 
+    public float capacity; // Capacity of the spatula in grams
+    public GameObject substancePrefab; // Prefab for the salt
 
     private bool isHoldingSubstance = false;
     private GameObject heldSubstance;
 
-    public Transform saltSpawnPointSpatula; 
-    private void OnTriggerEnter(Collider other)
+    public Transform saltSpawnPointSpatula; // Transform point where salt appears on the spatula
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("SaltBottle") && !isHoldingSubstance)
+        if (collision.gameObject.CompareTag("SaltBottle") && !isHoldingSubstance)
         {
             PickUpSalt();
         }
-        else if (other.CompareTag("Dish") && isHoldingSubstance)
+        else if (collision.gameObject.CompareTag("Dish") && isHoldingSubstance)
         {
-            Dish dish = other.GetComponent<Dish>();
+            Dish dish = collision.gameObject.GetComponent<Dish>();
             if (dish != null)
             {
-                dish.AddSalt(heldSubstance, capacity); 
+                dish.AddSalt(heldSubstance, capacity);
                 isHoldingSubstance = false;
                 heldSubstance = null;
             }
