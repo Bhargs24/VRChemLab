@@ -1,131 +1,86 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.XR.Interaction.Toolkit;
 
 public class WeighingBalance : MonoBehaviour
 {
-    public Transform snapPosition; // Where the dish snaps to on the balance
-    public Text weightDisplay; // Display for the weight
-    public Button tareButton; // Button to tare the balance
-    public Button changeUnitButton; // Button to change the unit
-    public Button onOffButton; // Button to turn the balance on/off
+    public Transform snapPosition;  
+    public Text weightDisplay;      
+    public Button tareButton;       
+    public Button changeUnitButton; 
+    public Button onOffButton;      
 
-    private float currentWeight = 0f;
-    private float tareWeight = 0f;
-    private XRGrabInteractable dishGrabInteractable;
-    private string currentUnit = "g";
-    private bool isOn = false;
+    private float currentWeight = 0f;  
+    private bool isBalanceOn = true;   
+    private float tareWeight = 0f;     
+    private string currentUnit = "g";  
 
     private void Start()
     {
+        
         tareButton.onClick.AddListener(TareScale);
         changeUnitButton.onClick.AddListener(ChangeUnit);
-        onOffButton.onClick.AddListener(ToggleOnOff);
+        onOffButton.onClick.AddListener(ToggleBalance);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
-        if (collision.gameObject.CompareTag("Dish") && isOn)
+        
+        if (other.gameObject.CompareTag("Dish"))
         {
-            SnapDish(collision.gameObject);
-            dishGrabInteractable = collision.gameObject.GetComponent<XRGrabInteractable>();
-            if (dishGrabInteractable != null)
-            {
-                dishGrabInteractable.selectExited.AddListener(ReleaseDish);
-            }
-            Dish dish = collision.gameObject.GetComponent<Dish>();
+           
+            other.transform.position = snapPosition.position;
+
+            
+            Dish dish = other.gameObject.GetComponent<Dish>();
             if (dish != null)
             {
-                UpdateWeight(dish);
+                currentWeight = dish.GetSaltWeight() - tareWeight;
+                UpdateWeightDisplay();
             }
         }
     }
 
-    private void SnapDish(GameObject dish)
+    private void TareScale()
     {
-        dish.transform.position = snapPosition.position;
-        dish.transform.rotation = snapPosition.rotation;
-        dish.transform.parent = snapPosition;
+       
+        tareWeight = currentWeight;
+        UpdateWeightDisplay();
     }
 
-    private void ReleaseDish(SelectExitEventArgs args)
+    private void ChangeUnit()
     {
-        if (dishGrabInteractable != null)
+        
+        switch (currentUnit)
         {
-            dishGrabInteractable.selectExited.RemoveListener(ReleaseDish);
+            case "g":
+                currentUnit = "kg";
+                currentWeight /= 1000f;  
+                break;
+            case "kg":
+                currentUnit = "mg";
+                currentWeight *= 1000f * 1000f;  
+                break;
+            case "mg":
+                currentUnit = "g";
+                currentWeight /= 1000f;  
+                break;
         }
-        args.interactorObject.transform.position = snapPosition.position;
-        args.interactorObject.transform.rotation = snapPosition.rotation;
+        UpdateWeightDisplay();
     }
 
-    private void UpdateWeight(Dish dish)
+    private void ToggleBalance()
     {
-        if (isOn)
-        {
-            currentWeight = dish.GetTotalSaltWeight() - tareWeight;
-            UpdateWeightDisplay();
-        }
+        
+        isBalanceOn = !isBalanceOn;
+        weightDisplay.text = isBalanceOn ? currentWeight.ToString("F2") + " " + currentUnit : "0";
     }
 
     private void UpdateWeightDisplay()
     {
-        float displayWeight = currentWeight;
-
-        switch (currentUnit)
+        
+        if (isBalanceOn)
         {
-            case "kg":
-                displayWeight = currentWeight / 1000f;
-                weightDisplay.text = displayWeight.ToString("F3") + " kg";
-                break;
-            case "mg":
-                displayWeight = currentWeight * 1000f;
-                weightDisplay.text = displayWeight.ToString("F0") + " mg";
-                break;
-            default:
-                weightDisplay.text = currentWeight.ToString("F2") + " g";
-                break;
+            weightDisplay.text = currentWeight.ToString("F2") + " " + currentUnit;
         }
-    }
-
-    public void TareScale()
-    {
-        if (isOn)
-        {
-            tareWeight = currentWeight;
-            UpdateWeightDisplay();
-        }
-    }
-
-    public void ChangeUnit()
-    {
-        if (isOn)
-        {
-            switch (currentUnit)
-            {
-                case "g":
-                    currentUnit = "kg";
-                    break;
-                case "kg":
-                    currentUnit = "mg";
-                    break;
-                case "mg":
-                    currentUnit = "g";
-                    break;
-            }
-            UpdateWeightDisplay();
-        }
-    }
-
-    public void ToggleOnOff()
-    {
-        isOn = !isOn;
-        ResetDisplay();
-    }
-
-    private void ResetDisplay()
-    {
-        currentWeight = 0f;
-        tareWeight = 0f;
-        UpdateWeightDisplay();
     }
 }

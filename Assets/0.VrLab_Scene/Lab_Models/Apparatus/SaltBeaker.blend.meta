@@ -3,7 +3,17 @@ guid: 80f4d385f46f26f46ae01ed98f5f2dee
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Naphtholinbtl.001
+    second: {fileID: 2100000, guid: 1afc3edbb9327454cb4e5411e4586d76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: label.001
+    second: {fileID: 2100000, guid: a2692847690f86b4590ea1f5c0632c22, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -2,39 +2,46 @@ using UnityEngine;
 
 public class Spatula : MonoBehaviour
 {
-    public float capacity; // Capacity of the spatula in grams
-    public GameObject substancePrefab; // Prefab for the salt
-
-    private bool isHoldingSubstance = false;
-    private GameObject heldSubstance;
-
-    public Transform saltSpawnPointSpatula; // Transform point where salt appears on the spatula
+    public GameObject saltPrefab;
+    public Transform saltSpawnPoint;
+    public float saltAmount = 5f;
+    private bool hasSalt = false;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("SaltBottle") && !isHoldingSubstance)
+        if (collision.gameObject.name == "SaltBottle" && !hasSalt)
         {
-            PickUpSalt();
+            PickupSalt();
         }
-        else if (collision.gameObject.CompareTag("Dish") && isHoldingSubstance)
+        else if (collision.gameObject.name == "Dish" && hasSalt)
         {
-            Dish dish = collision.gameObject.GetComponent<Dish>();
-            if (dish != null)
-            {
-                dish.AddSalt(heldSubstance, capacity);
-                isHoldingSubstance = false;
-                heldSubstance = null;
-            }
+            TransferSaltToDish(collision.gameObject);
         }
     }
 
-    public void PickUpSalt()
+    private void PickupSalt()
     {
-        if (!isHoldingSubstance)
+        if (saltPrefab != null && saltSpawnPoint != null)
         {
-            isHoldingSubstance = true;
-            heldSubstance = Instantiate(substancePrefab, saltSpawnPointSpatula.position, saltSpawnPointSpatula.rotation);
-            heldSubstance.transform.parent = saltSpawnPointSpatula;
+            Instantiate(saltPrefab, saltSpawnPoint.position, Quaternion.identity, transform);
+            hasSalt = true;
+        }
+    }
+
+    private void TransferSaltToDish(GameObject dish)
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.name == "Salt")
+            {
+                Destroy(child.gameObject);
+                hasSalt = false;
+                if (dish.TryGetComponent<Dish>(out Dish dishScript))
+                {
+                    dishScript.AddSalt(saltAmount);
+                }
+                break;
+            }
         }
     }
 }

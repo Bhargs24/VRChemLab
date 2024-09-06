@@ -2,25 +2,29 @@ using UnityEngine;
 
 public class Dish : MonoBehaviour
 {
-    private float totalSaltWeight = 0f; // Total weight of salt in the dish
-    public Transform saltSpawnPointDish; // Transform point where salt appears in the dish
+    public Transform saltSpawnPoint;
+    public GameObject saltPrefab;
+    private float totalSaltWeight = 0f;
 
-    public void AddSalt(GameObject salt, float weight)
+    public void AddSalt(float saltAmount)
     {
-        totalSaltWeight += weight;
-        Debug.Log("Total salt in dish: " + totalSaltWeight + " g");
-        SnapSaltToPosition(salt);
+        totalSaltWeight += saltAmount;
+        InstantiateSaltVisual(saltAmount);
     }
 
-    public float GetTotalSaltWeight()
+    private void InstantiateSaltVisual(float saltAmount)
+    {
+        if (saltPrefab != null && saltSpawnPoint != null)
+        {
+            GameObject saltVisual = Instantiate(saltPrefab, saltSpawnPoint.position, Quaternion.identity);
+            float scaleMultiplier = saltAmount / 5f;
+            saltVisual.transform.localScale *= scaleMultiplier;
+            saltVisual.transform.SetParent(saltSpawnPoint);
+        }
+    }
+
+    public float GetSaltWeight()
     {
         return totalSaltWeight;
-    }
-
-    private void SnapSaltToPosition(GameObject salt)
-    {
-        salt.transform.position = saltSpawnPointDish.position;
-        salt.transform.rotation = saltSpawnPointDish.rotation;
-        salt.transform.parent = saltSpawnPointDish;
     }
 }
