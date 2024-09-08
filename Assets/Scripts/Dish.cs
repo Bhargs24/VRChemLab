@@ -18,17 +18,14 @@ public class Dish : MonoBehaviour
 
     private void InstantiateSaltVisual(float saltAmount)
     {
-        /*if (saltPrefab != null && saltSpawnPoint != null)
-        {
-            GameObject saltVisual = Instantiate(saltPrefab, saltSpawnPoint.localPosition, Quaternion.identity);
-            float scaleMultiplier = saltAmount / 5f;
-            saltVisual.transform.localScale *= scaleMultiplier;
-            saltVisual.transform.SetParent(saltSpawnPoint);
-        }*/
         saltPrefab.SetActive(true);
-        // float scaleFactor = totalSaltWeight;
-        saltPrefab.transform.localScale *= totalSaltWeight;
 
+        
+        Vector3 baseScale = new Vector3(1f, 1f, 1f); 
+        float scaleFactor = 1f + (saltAmount * 0.1f); 
+
+        
+        saltPrefab.transform.localScale = baseScale * scaleFactor;
     }
 
     public float GetSaltWeight()
