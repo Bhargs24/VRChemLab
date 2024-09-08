@@ -4217,11 +4217,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1499172807909112640, guid: 704e0781b535a044a98a4560e5b7c40a,
         type: 3}
-<<<<<<< HEAD
+
       propertyPath: m_AttachTransform
       value: 
       objectReference: {fileID: 1040322167}
-=======
+
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4260,7 +4260,7 @@ PrefabInstance:
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.XR.Interaction.Toolkit.XRBaseInteractor, Unity.XR.Interaction.Toolkit
       objectReference: {fileID: 0}
->>>>>>> 2c40e5d68f0b3779bccc9deee336f7090786de54
+
     - target: {fileID: 2782426374928925368, guid: 704e0781b535a044a98a4560e5b7c40a,
         type: 3}
       propertyPath: m_Name
@@ -4536,8 +4536,8 @@ SceneRoots:
   - {fileID: 46879066}
   - {fileID: 47701296}
   - {fileID: 84446133}
-<<<<<<< HEAD
+
   - {fileID: 33323826}
-=======
+
   - {fileID: 1533095562}
->>>>>>> 2c40e5d68f0b3779bccc9deee336f7090786de54
+

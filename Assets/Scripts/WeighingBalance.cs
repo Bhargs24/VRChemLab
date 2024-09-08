@@ -1,10 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WeighingBalance : MonoBehaviour
 {
     private Vector3 snapPosition;
-    public Text weightDisplay;
+    public TextMeshPro weightDisplay;
     public Button tareButton;
     public Button changeUnitButton;
     public Button onOffButton;
