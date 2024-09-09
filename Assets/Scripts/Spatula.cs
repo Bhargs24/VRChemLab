@@ -29,15 +29,7 @@ public class Spatula : MonoBehaviour
     private void PickupSalt()
     {
 
-        /* if (saltPrefab != null && saltSpawnPoint != null)
-        {
-            
-            hasSalt = true;
-        }
         
-    
-        }
-        */
         if(!hasSalt)
         {
             saltPrefab.SetActive(true);    
@@ -49,19 +41,7 @@ public class Spatula : MonoBehaviour
 
     private void TransferSaltToDish(GameObject dish)
     {
-        /*foreach (Transform child in transform)
-        {
-            if (child.gameObject.name == "salt")
-            {
-                Destroy(child.gameObject);
-                hasSalt = false;
-                if (dish.TryGetComponent<Dish>(out Dish dishScript))
-                {
-                    dishScript.AddSalt(saltAmount);
-                }
-                break;
-            }
-        }*/
+       
         print("collision detected");
         saltPrefab.SetActive(false);
         hasSalt = false;

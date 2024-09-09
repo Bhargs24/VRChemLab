@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99791030f281314d83e2778aefc7e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Dishobj: {fileID: 0}
   saltSpawnPoint: {fileID: 3440976184416989929}
   saltAmount: 0.1
 --- !u!4 &1103248551084795178 stripped
