@@ -4651,6 +4651,11 @@ PrefabInstance:
       propertyPath: changeUnitButton
       value: 
       objectReference: {fileID: 1371768770}
+    - target: {fileID: 6117533039598849259, guid: cf60c1a1b0ebab843affedfd56e65378,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
