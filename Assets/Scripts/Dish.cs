@@ -18,9 +18,9 @@ public class Dish : MonoBehaviour
 
     private void InstantiateSaltVisual(float saltAmount)
     {
-        
+
         saltPrefab.SetActive(true);
-        
+
         saltPrefab.transform.localScale *= totalSaltWeight;
 
     }
@@ -35,5 +35,11 @@ public class Dish : MonoBehaviour
         Rigidbody rb = this.gameObject.GetComponent<Rigidbody>();
         rb.useGravity = true;
         rb.isKinematic = false;
+    }
+    void Update()
+    {
+        Rigidbody rb = this.gameObject.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.useGravity = true;
     }
 }
