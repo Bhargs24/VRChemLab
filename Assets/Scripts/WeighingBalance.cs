@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WeighingBalance : MonoBehaviour
 {
     private Vector3 snapPosition;
-    public Text weightDisplay;
-    public Button tareButton;
-    public Button changeUnitButton;
-    public Button onOffButton;
+    public TextMeshProUGUI weightDisplay;
+    public GameObject tareButton;
+    public GameObject changeUnitButton;
+    public GameObject onOffButton;
     private float currentWeight = 0f;
     private bool isBalanceOn = true;
     private float tareWeight = 0f;
@@ -16,20 +17,16 @@ public class WeighingBalance : MonoBehaviour
     private void Start()
     {
         snapPosition = new Vector3(0.139799997f, 0.647000015f, -3.68799996f);
-        tareButton.onClick.AddListener(TareScale);
-        changeUnitButton.onClick.AddListener(ChangeUnit);
-        onOffButton.onClick.AddListener(ToggleBalance);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
-        if (other.gameObject.tag == "Dish")
-        {
-            rb.useGravity = false;
-            rb.isKinematic = true;
-            other.gameObject.transform.position = snapPosition;
-        }
+        placeDishInMachine(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        placeDishInMachine(other);
     }
 
     void OnTriggerExit(Collider other)
@@ -42,32 +39,25 @@ public class WeighingBalance : MonoBehaviour
         }
     }
 
-    // private void OnCollisionEnter(Collision other)
-    // {
-
-    //     if (other.gameObject.CompareTag("Dish"))
-    //     {
-
-    //         other.transform.position = snapPosition.position;
-
-
-    //         Dish dish = other.gameObject.GetComponent<Dish>();
-    //         if (dish != null)
-    //         {
-    //             currentWeight = dish.GetSaltWeight() - tareWeight;
-    //             UpdateWeightDisplay();
-    //         }
-    //     }
-    // }
-
-    private void TareScale()
+    void placeDishInMachine(Collider other)
+    {
+        Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+        if (other.gameObject.tag == "Dish")
+        {
+            rb.useGravity = false;
+            rb.isKinematic = true;
+            other.gameObject.transform.position = snapPosition;
+            other.gameObject.transform.rotation = Quaternion.Euler(-90, 0, 0);
+        }
+    }
+    public void TareScale()
     {
 
         tareWeight = currentWeight;
         UpdateWeightDisplay();
     }
 
-    private void ChangeUnit()
+    public void ChangeUnit()
     {
 
         switch (currentUnit)
@@ -95,12 +85,24 @@ public class WeighingBalance : MonoBehaviour
         weightDisplay.text = isBalanceOn ? currentWeight.ToString("F2") + " " + currentUnit : "0";
     }
 
-    private void UpdateWeightDisplay()
+    public void UpdateWeightDisplay()
     {
 
         if (isBalanceOn)
         {
             weightDisplay.text = currentWeight.ToString("F2") + " " + currentUnit;
+        }
+    }
+
+    public void OnOffButton(bool b)
+    {
+        if(!b)
+        {
+            weightDisplay.gameObject.SetActive(false);
+        }
+        else
+        {
+            weightDisplay.gameObject.SetActive(true);
         }
     }
 }

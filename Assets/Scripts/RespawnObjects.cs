@@ -23,7 +23,7 @@ public class RespawnObjects : MonoBehaviour
     {
         for (int i = 0; i < objectsToRespawn.Length; i++)
         {
-            if (objectsToRespawn[i].transform.position.y < 0.02)
+            if (objectsToRespawn[i].transform.position.y < 0.04)
             {
                 Rigidbody rb = objectsToRespawn[i].GetComponent<Rigidbody>();
                 if (rb != null)

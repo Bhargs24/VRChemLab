@@ -29,4 +29,11 @@ public class Dish : MonoBehaviour
     {
         return totalSaltWeight;
     }
+
+    public void dropObject()
+    {
+        Rigidbody rb = this.gameObject.GetComponent<Rigidbody>();
+        rb.useGravity = true;
+        rb.isKinematic = false;
+    }
 }
