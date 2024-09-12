@@ -5,11 +5,13 @@ public class WeighingBalance : MonoBehaviour
 {
     private Vector3 snapPosition;
     public GameObject weightDisplay;
-    private float currentWeight = 0f;
-    private float dishWeight = 25f;
-    private bool isBalanceOn = false, tared = false;
-    private float tareWeight = 0f;
-    private string currentUnit = "g";
+    private float currentWeight = 0f; // Total weight including dish and salt
+    private float dishWeight = 25f;   // Dish weight
+    private bool isBalanceOn = false;
+    private bool tared = false;
+    private bool showingSaltOnly = false; // Toggle between showing only salt or including dish weight
+    private float tareOffset = 0f;    // Offset used for taring, stored in grams
+    private string currentUnit = "g"; // Default unit is grams
     private TextMeshProUGUI textComponent;
     public Dish dishScript;
 
@@ -24,18 +26,18 @@ public class WeighingBalance : MonoBehaviour
     {
         if (isBalanceOn)
         {
-            UpdateWeightDisplay(tared);
+            UpdateWeightDisplay();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        placeDishInMachine(other);
+        HandleDishPlacement(other);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        placeDishInMachine(other);
+        HandleDishPlacement(other);
     }
 
     private void OnTriggerExit(Collider other)
@@ -43,18 +45,27 @@ public class WeighingBalance : MonoBehaviour
         Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
         if (other.gameObject.tag == "Dish")
         {
-            currentWeight = 0f;
             rb.useGravity = true;
             rb.isKinematic = false;
+            // Clear weight and tare state if dish is removed
+            if (!tared)
+            {
+                currentWeight = 0f;
+            }
+            else
+            {
+                // If tared, just reset the salt weight as tare is still valid
+                currentWeight = dishScript.GetSaltWeight();
+            }
         }
     }
 
-    private void placeDishInMachine(Collider other)
+    private void HandleDishPlacement(Collider other)
     {
-        Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
         if (other.gameObject.tag == "Dish")
         {
-            currentWeight = dishScript.GetSaltWeight() + dishWeight;
+            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+            currentWeight = dishScript.GetSaltWeight() + dishWeight; // Always calculate weight as (salt + dish)
             rb.useGravity = false;
             rb.isKinematic = true;
             other.gameObject.transform.position = snapPosition;
@@ -64,53 +75,114 @@ public class WeighingBalance : MonoBehaviour
 
     public void TareScale()
     {
-        tared = !tared;
-        UpdateWeightDisplay(tared);
+        if (isBalanceOn)
+        {
+            if (!tared)
+            {
+                // Set tare offset to the current total weight
+                tareOffset = currentWeight; // Sets tare for (dish + salt) combined
+                showingSaltOnly = true;
+                tared = true;
+            }
+            else
+            {
+                // Reset tare and toggle showingSaltOnly
+                if (showingSaltOnly)
+                {
+                    tareOffset = 0f; // Reset tare offset
+                    showingSaltOnly = false;
+                }
+                else
+                {
+                    tareOffset = currentWeight; // Tare again to show salt only
+                    showingSaltOnly = true;
+                }
+            }
+            UpdateWeightDisplay();
+        }
     }
 
     public void ChangeUnit()
     {
+        // Reset to grams before switching units to avoid compounding errors
+        float weightInGrams = ConvertToGrams(currentWeight);
+
+        // Cycle through units
         switch (currentUnit)
         {
             case "g":
                 currentUnit = "kg";
-                currentWeight /= 1000f;
-                tareWeight /= 1000f;
+                weightInGrams /= 1000f; // Convert to kilograms
                 break;
             case "kg":
                 currentUnit = "mg";
-                currentWeight *= 1000f * 1000f;
-                tareWeight *= 1000f * 1000f;
+                weightInGrams *= 1000000f; // Convert to milligrams
                 break;
             case "mg":
                 currentUnit = "g";
-                currentWeight /= 1000f * 1000f;
-                tareWeight /= 1000f * 1000f;
+                weightInGrams = weightInGrams / 1000f / 1000f; // Reset to grams
                 break;
         }
-        UpdateWeightDisplay(tared);
+
+        currentWeight = weightInGrams;
+        UpdateWeightDisplay();
     }
 
-    public void UpdateWeightDisplay(bool tared)
+    private float ConvertToGrams(float weight)
     {
-        if (currentWeight == 0f)
+        switch (currentUnit)
         {
-            textComponent.text = "0.00 " + currentUnit;
-            return;
+            case "kg":
+                return weight * 1000f;
+            case "mg":
+                return weight / 1000f;
+            case "g":
+            default:
+                return weight;
         }
-        tareWeight = currentWeight - dishWeight;
-        if (isBalanceOn)
+    }
+
+    public void UpdateWeightDisplay()
+    {
+        float displayedWeight;
+
+        if (showingSaltOnly)
         {
-            if (tared)
-                textComponent.text = tareWeight.ToString("F2") + " " + currentUnit;
-            else
-                textComponent.text = currentWeight.ToString("F2") + " " + currentUnit;
+            // Show weight of the salt only
+            displayedWeight = Mathf.Max(currentWeight - dishWeight - tareOffset, 0);
         }
+        else
+        {
+            // Show weight including the dish weight
+            displayedWeight = Mathf.Max(currentWeight - tareOffset, 0);
+        }
+
+        // Convert weight for display based on the current unit
+        switch (currentUnit)
+        {
+            case "kg":
+                displayedWeight /= 1000f; // Convert grams to kilograms
+                break;
+            case "mg":
+                displayedWeight *= 1000f; // Convert grams to milligrams
+                break;
+            case "g":
+            default:
+                break; // Already in grams
+        }
+
+        textComponent.text = displayedWeight.ToString("F2") + " " + currentUnit;
     }
 
     public void OnOffButton(bool b)
     {
         weightDisplay.SetActive(b);
         isBalanceOn = b;
+
+        if (isBalanceOn)
+        {
+            currentWeight = dishWeight; // Initialize with dish weight
+            UpdateWeightDisplay();
+        }
     }
 }

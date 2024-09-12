@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 80f4d385f46f26f46ae01ed98f5f2dee
+guid: cb233fa2668cffc409e06d573005939a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Naphtholinbtl.001
-    second: {fileID: 2100000, guid: 1afc3edbb9327454cb4e5411e4586d76, type: 2}
+      name: Bttle.001
+    second: {fileID: 2100000, guid: b816d99d03f6e4a49ba751da896dbe30, type: 2}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: label.001
-    second: {fileID: 2100000, guid: a2692847690f86b4590ea1f5c0632c22, type: 2}
+      name: label
+    second: {fileID: 2800000, guid: 19349c0f9e48a0640af668cd7915ee1a, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

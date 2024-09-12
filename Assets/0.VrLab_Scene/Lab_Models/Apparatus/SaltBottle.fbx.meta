@@ -1,20 +1,14 @@
 fileFormatVersion: 2
-guid: f5a6f738b15b8a442bf4c59a30811316
+guid: b1cf2aca360df1144ba182b3ae0d4a3e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Kleenex_opt_tissue_SeeThrough
-    second: {fileID: 2100000, guid: b816d99d03f6e4a49ba751da896dbe30, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Kleenex_opt_tissue_Single
-    second: {fileID: 8556262120643298411, guid: 2581757ce6047624a851e49d543f6288,
-      type: 3}
+      name: salt_label
+    second: {fileID: 2800000, guid: 9ca95fce5fb3457418d117ae9318d838, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

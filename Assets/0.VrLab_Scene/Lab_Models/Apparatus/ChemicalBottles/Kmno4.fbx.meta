@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 3fd8ad47227b4b1468b2784918e63fb4
+guid: d766b8d9c5ecd0a4883136a57925c914
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bttle
+    second: {fileID: 2100000, guid: b816d99d03f6e4a49ba751da896dbe30, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: kmno4
+    second: {fileID: 2800000, guid: dc606f1847e9a2d458092c0426549c57, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
