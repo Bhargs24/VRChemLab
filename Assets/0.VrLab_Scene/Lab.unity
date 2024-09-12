@@ -4306,6 +4306,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 892350198111087333, guid: e19563d44ff649747a68b10a5c6c0ef1,
         type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 892350198111087333, guid: e19563d44ff649747a68b10a5c6c0ef1,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 892350198111087333, guid: e19563d44ff649747a68b10a5c6c0ef1,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 892350198111087333, guid: e19563d44ff649747a68b10a5c6c0ef1,
+        type: 3}
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
@@ -4662,6 +4677,21 @@ PrefabInstance:
       objectReference: {fileID: 254828601}
     - target: {fileID: 3159268888823085463, guid: 4574f5c60187d894f89d35e14f42fa64,
         type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3159268888823085463, guid: 4574f5c60187d894f89d35e14f42fa64,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3159268888823085463, guid: 4574f5c60187d894f89d35e14f42fa64,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3159268888823085463, guid: 4574f5c60187d894f89d35e14f42fa64,
+        type: 3}
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
@@ -5012,6 +5042,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118759887338114800, guid: 1610cef7ea91dbe4caf950fa4a055cf0,
+        type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118759887338114800, guid: 1610cef7ea91dbe4caf950fa4a055cf0,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118759887338114800, guid: 1610cef7ea91dbe4caf950fa4a055cf0,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6118759887338114800, guid: 1610cef7ea91dbe4caf950fa4a055cf0,
         type: 3}
