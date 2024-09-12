@@ -7,10 +7,10 @@ TagManager:
   - Spatula
   - Dish
   - RespawnArea
-  - Left Hand
-  - Right hand
   - SaltBottle
   - Salt
+  - Right Hand
+  - Left Hand
   layers:
   - Default
   - TransparentFX

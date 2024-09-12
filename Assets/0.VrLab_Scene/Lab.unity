@@ -679,11 +679,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5686134208185362930, guid: 1fd3a7c43c8190f4d8c167ebde694364,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 501130271}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
 --- !u!4 &228761583 stripped
 Transform:
@@ -703,6 +699,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4034972961254322921}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &254828602 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7143367032322528203, guid: 704e0781b535a044a98a4560e5b7c40a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4034972961254322921}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254828601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 208af90615631ce498ece1f19bf4a54a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &278360699
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,7 +728,7 @@ GameObject:
   - component: {fileID: 278360706}
   m_Layer: 0
   m_Name: Right Controller
-  m_TagString: Right hand
+  m_TagString: Right Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2299,57 +2307,6 @@ MonoBehaviour:
   m_LocomotionProvider: {fileID: 475477601}
   m_MinHeight: 0
   m_MaxHeight: Infinity
---- !u!1 &501130269 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5686134208185362930, guid: 1fd3a7c43c8190f4d8c167ebde694364,
-    type: 3}
-  m_PrefabInstance: {fileID: 228761582}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &501130270 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5686134208192617028, guid: 1fd3a7c43c8190f4d8c167ebde694364,
-    type: 3}
-  m_PrefabInstance: {fileID: 228761582}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &501130271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 501130269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b2f6a131a3eaa34da43bc5a5e51e008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PinchAnimatinAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Pinch Animatin
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: e1c02242-d810-4747-9528-40c5f8c5bf1d
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f,
-      type: 3}
-  gripAnimationAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Grip Animation
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: eb8e05ac-fc15-433e-ae93-b474712a79f7
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f,
-      type: 3}
-  handAnimator: {fileID: 501130270}
 --- !u!4 &530627232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5115458188191872523, guid: 4574f5c60187d894f89d35e14f42fa64,
@@ -2420,7 +2377,7 @@ MonoBehaviour:
       m_Name: Pinch Animatin
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 8628f074-b867-498b-9b70-1a8b81953947
+      m_Id: d09b48c3-d4e6-4114-957f-58ec73ebccee
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -2433,7 +2390,7 @@ MonoBehaviour:
       m_Name: Grip Animation
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 99c3fe22-6fad-45c4-9092-0f813fb3bf94
+      m_Id: 2915e423-bec4-46a3-9d04-e2186229ad7f
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -3319,6 +3276,7 @@ GameObject:
   - component: {fileID: 1371768771}
   - component: {fileID: 1371768772}
   - component: {fileID: 1371768773}
+  - component: {fileID: 1371768774}
   m_Layer: 0
   m_Name: On/Off Button
   m_TagString: Untagged
@@ -3335,7 +3293,7 @@ Transform:
   m_GameObject: {fileID: 1371768770}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -123.9, y: 21.6, z: 114.1}
+  m_LocalPosition: {x: -123.9, y: 21.6, z: 110.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3356,7 +3314,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3374,7 +3332,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7fe11e89547cd4098a5a83c8bc9db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeighingBalance: {fileID: 0}
+  WeighingBalance: {fileID: 1897319611}
+--- !u!54 &1371768774
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371768770}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!1 &1486427060
 GameObject:
   m_ObjectHideFlags: 0
@@ -3386,6 +3371,7 @@ GameObject:
   - component: {fileID: 1486427061}
   - component: {fileID: 1486427062}
   - component: {fileID: 1486427063}
+  - component: {fileID: 1486427064}
   m_Layer: 0
   m_Name: Unit Button
   m_TagString: Untagged
@@ -3402,7 +3388,7 @@ Transform:
   m_GameObject: {fileID: 1486427060}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -126.5, y: 23.7, z: -86.2}
+  m_LocalPosition: {x: -126.5, y: 23.7, z: -85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3423,7 +3409,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3441,7 +3427,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b871763bcf2f2094baa86155413bf18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeighingBalance: {fileID: 0}
+  WeighingBalance: {fileID: 1897319611}
+--- !u!54 &1486427064
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486427060}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &1533095560
 GameObject:
   m_ObjectHideFlags: 0
@@ -3504,6 +3517,7 @@ GameObject:
   - component: {fileID: 1546847538}
   - component: {fileID: 1546847539}
   - component: {fileID: 1546847540}
+  - component: {fileID: 1546847541}
   m_Layer: 0
   m_Name: Tare Button
   m_TagString: Untagged
@@ -3541,7 +3555,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3560,6 +3574,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeighingBalance: {fileID: 1897319611}
+--- !u!54 &1546847541
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546847537}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &1568954914 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6193188609648082931, guid: e19563d44ff649747a68b10a5c6c0ef1,
@@ -3693,18 +3734,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893921547}
-  m_LocalRotation: {x: -0.4364757, y: -0.5563173, z: -0.4364757, w: 0.5563173}
+  m_LocalRotation: {x: -0.4793061, y: -0.5198708, z: -0.4793061, w: 0.5198708}
   m_LocalPosition: {x: 0, y: 0, z: 33.2}
   m_LocalScale: {x: 0.11029275, y: 0.09142786, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2110992102}
   m_Father: {fileID: 1897319610}
-  m_LocalEulerAnglesHint: {x: -76.234, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: -85.35, y: -90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -133.7, y: 27.7}
-  m_SizeDelta: {x: 794.80005, y: 446.8}
+  m_AnchoredPosition: {x: -129.3, y: 26.9}
+  m_SizeDelta: {x: 794.80005, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1893921549
 MonoBehaviour:
@@ -4026,8 +4067,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110992101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -55.6}
-  m_LocalScale: {x: -1.56, y: 2.3966, z: -2.3966}
+  m_LocalPosition: {x: 0, y: 0, z: -24}
+  m_LocalScale: {x: -2, y: 3, z: -2.3966}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1893921548}
@@ -4035,7 +4076,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -17, y: 24}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2110992103
 MonoBehaviour:
@@ -4084,8 +4125,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4120,7 +4161,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -5.5082893}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4633,6 +4674,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1101952223558838269, guid: cf60c1a1b0ebab843affedfd56e65378,
         type: 3}
+      propertyPath: dishScript
+      value: 
+      objectReference: {fileID: 254828602}
+    - target: {fileID: 1101952223558838269, guid: cf60c1a1b0ebab843affedfd56e65378,
+        type: 3}
       propertyPath: tareButton
       value: 
       objectReference: {fileID: 1546847537}
@@ -4645,7 +4691,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weightDisplay
       value: 
-      objectReference: {fileID: 2110992103}
+      objectReference: {fileID: 2110992101}
     - target: {fileID: 1101952223558838269, guid: cf60c1a1b0ebab843affedfd56e65378,
         type: 3}
       propertyPath: changeUnitButton

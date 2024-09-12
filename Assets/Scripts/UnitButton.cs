@@ -9,7 +9,8 @@ public class UnitButton : MonoBehaviour
     {
         if (other.gameObject.tag == "Left Hand" || other.gameObject.tag == "Right Hand")
         {
-            WeighingBalance.ChangeUnit();
+            print("UnitButton pressed");
+            // WeighingBalance.ChangeUnit();
         }
     }
 }
