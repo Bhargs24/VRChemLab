@@ -9,9 +9,7 @@ public class TareButton : MonoBehaviour
     {
         if (other.gameObject.tag == "Left Hand" || other.gameObject.tag == "Right Hand")
         {
-            print("TareButton pressed");
             WeighingBalance.TareScale();
-
         }
     }
 }
