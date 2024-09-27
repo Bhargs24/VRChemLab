@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Samples/XR Interaction Toolkit/2.5.2/Starter Assets/DemoScene.unity
     guid: 319dafa5c80f29f428dc1e0d03f04177
   - enabled: 1
-    path: Assets/0.VrLab_Scene/Lab.unity
+    path: Assets/0.VrLab_Scene/MainLab.unity
     guid: 605400d5e18409741a47d0c453c7881d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 49a68c1f3aa64fd4584afbff67b5ccae,
